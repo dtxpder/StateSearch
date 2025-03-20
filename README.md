@@ -27,3 +27,30 @@ chmod +x start.sh
 
 - Frontend: [http://localhost:5173](http://localhost:5173)
 - Backend GraphQL Playground: [http://localhost:4000/graphql](http://localhost:4000/graphql)
+
+## Example Result
+
+### Frontend
+
+After running the project, you should see:
+
+![Frontend example](images/demo.jpg)
+
+### Backend (GraphQL API)
+
+You can verify the backend by sending a GraphQL query like this:
+
+**Query:**
+```graphql
+query {
+  states(name: "fl") {
+    id
+    name
+    geometry {
+      type
+      coordinates
+    }
+  }
+}
+```
+![Backend API example](images/graphql.jpg)
