@@ -31,7 +31,12 @@
 set -e
 
 echo "Starting Docker containers..."
-docker-compose up --build -d
+docker-compose up -d
+sleep 5
+docker exec mongodb mongosh usmap --eval "db.states.deleteMany({})"
+docker cp data/us-states-array.json mongodb:/us-states-array.json
+docker exec mongodb mongoimport --db usmap --collection states --file /us-states-array.json --jsonArray
+
 
 echo "All services started successfully!"
 echo "Frontend running at: http://localhost:5173"

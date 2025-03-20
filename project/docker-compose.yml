@@ -29,11 +29,13 @@ services:
       - MONGODB_URI=mongodb://mongodb:27017/usmap
     depends_on:
       - mongo
+
   frontend:
     build: ./frontend
     ports:
       - "5173:5173"
     depends_on:
       - backend
+
 volumes:
   mongodbdata:
